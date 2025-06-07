@@ -26,3 +26,23 @@ struct Estudiante {
         }
     }
 };
+
+// Función para mostrar encabezado del sistema
+void Encabezado() {
+	cout << "\n";
+	cout << "************************************************************\n";
+	cout << "*           SISTEMA DE CALIFICACIONES ESTUDIANTILES        *\n";
+	cout << "*              UNIVERSIDAD NACIONAL - SEDE Nicoya          *\n";
+	cout << "************************************************************\n";
+	cout << "\n";
+}
+
+// Función para mostrar encabezado de sección de estudiantes
+void EncabezadoEstudiantes(int numeroEstudiante) {
+	cout << "\n";
+	cout << "+--------------------------------------------------------+\n";
+	cout << "¦               ESTUDIANTE #" << setfill('0') << setw(2) << numeroEstudiante << "                           ¦\n";
+	cout << "+--------------------------------------------------------+\n";
+	cout << "\n";
+}
+return 0;
