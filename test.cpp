@@ -27,7 +27,7 @@ struct Estudiante {
     }
 };
 
-// Función para mostrar encabezado del sistema
+// Funcion para mostrar encabezado del sistema
 void Encabezado() {
 	cout << "\n";
 	cout << "************************************************************\n";
@@ -37,12 +37,53 @@ void Encabezado() {
 	cout << "\n";
 }
 
-// Función para mostrar encabezado de sección de estudiantes
+// Funcion para mostrar encabezado de sección de estudiantes
 void EncabezadoEstudiantes(int numeroEstudiante) {
 	cout << "\n";
 	cout << "+--------------------------------------------------------+\n";
-	cout << "¦               ESTUDIANTE #" << setfill('0') << setw(2) << numeroEstudiante << "                           ¦\n";
+	cout << "*               ESTUDIANTE #" << setfill('0') << setw(2) << numeroEstudiante << "                           *\n";
 	cout << "+--------------------------------------------------------+\n";
 	cout << "\n";
 }
 return 0;
+
+// Funcion para validar que una cadena solo contenga letras y espacios
+bool soloLetrasYEspacios(const string& texto) {
+	if (texto.empty()) {
+		return false; // No permite espacios vacíos
+	}
+	
+	for (char c : texto) {
+		// Permite solo letras mayúsculas, minúsculas y espacios
+		if (!isalpha(c) && c != ' ') {
+			return false;
+		}
+	}
+	
+	// Verificar que no sea solo espacios
+	bool tieneLetras = false;
+	for (char c : texto) {
+		if (isalpha(c)) {
+			tieneLetras = true;
+			break;
+		}
+	}
+	
+	return tieneLetras;
+}
+
+// Funcion para validar nombres (solo letras y espacios)
+string validarNombre(const string& mensaje) {
+	string nombre;
+	while (true) {
+		cout << mensaje;
+		getline(cin, nombre);
+		
+		if (soloLetrasYEspacios(nombre)) {
+			return nombre;
+		} else {
+			cout << " ERROR: Los nombres solo pueden contener letras y espacios.\n";
+		}
+	}
+}
+
