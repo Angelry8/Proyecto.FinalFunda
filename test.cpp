@@ -87,3 +87,34 @@ string validarNombre(const string& mensaje) {
 	}
 }
 
+// Funcion para validar numeros positivos
+int validarNumerosPositivos(const string& mensaje) {
+	int valor;
+	while (true) {
+		cout << mensaje;
+		if (cin >> valor && valor > 0) {
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			return valor;
+		} else {
+			cout << " ERROR: Debe ingresar un número entero positivo.\n";
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+	}
+}
+
+// Funcion para validar calificaciones (0.0 - 100.0)
+double validarCalificacion(const string& mensaje) {
+	double calificacion;
+	while (true) {
+		cout << mensaje;
+		if (cin >> calificacion && calificacion >= 0.0 && calificacion <= 100.0) {
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			return calificacion;
+		} else {
+			cout << " ERROR: La calificación debe estar entre 0.0 y 100.0\n";
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+	}
+}
