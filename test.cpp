@@ -37,7 +37,7 @@ void Encabezado() {
 	cout << "\n";
 }
 
-// Funcion para mostrar encabezado de sección de estudiantes
+// Funcion para mostrar encabezado de secciï¿½n de estudiantes
 void EncabezadoEstudiantes(int numeroEstudiante) {
 	cout << "\n";
 	cout << "+--------------------------------------------------------+\n";
@@ -50,11 +50,11 @@ return 0;
 // Funcion para validar que una cadena solo contenga letras y espacios
 bool soloLetrasYEspacios(const string& texto) {
 	if (texto.empty()) {
-		return false; // No permite espacios vacíos
+		return false; // No permite espacios vacï¿½os
 	}
 	
 	for (char c : texto) {
-		// Permite solo letras mayúsculas, minúsculas y espacios
+		// Permite solo letras mayï¿½sculas, minï¿½sculas y espacios
 		if (!isalpha(c) && c != ' ') {
 			return false;
 		}
@@ -96,7 +96,7 @@ int validarNumerosPositivos(const string& mensaje) {
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			return valor;
 		} else {
-			cout << " ERROR: Debe ingresar un número entero positivo.\n";
+			cout << " ERROR: Debe ingresar un nï¿½mero entero positivo.\n";
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
@@ -112,9 +112,23 @@ double validarCalificacion(const string& mensaje) {
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			return calificacion;
 		} else {
-			cout << " ERROR: La calificación debe estar entre 0.0 y 100.0\n";
+			cout << " ERROR: La calificaciï¿½n debe estar entre 0.0 y 100.0\n";
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
 	}
+}
+
+//Funcion para capturar datos de un estudiante
+void DatosEstudiantes (estudiantes& estudiante, int numeroEstudiante){
+	EncabezadoEstudiantes (numeroEstudiante);
+
+	//capturar datos personales 
+	cout << "DATOS PERSONALES:\n";
+	cout << "-------------------\n";
+
+	estudiante.primerNombre = validarNombre("ingrese primer nombre: ");
+	estudiante.primerApellido = validarNombre("ingrese primer apellido: ");
+	estudiante.segundoApellido = validarNombre("ingrese segundo apellido: ");
+	estudiante.cedula = validarNumerosPositivos("ingrese numero de cedula: ");
 }
