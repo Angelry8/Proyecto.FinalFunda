@@ -147,4 +147,10 @@ void DatosEstudiantes (estudiantes& estudiante, int numeroEstudiante){
 		suma += estudiante.calificaciones[i];
 	}
 	estudiante.promedio = suma / 5.0;
+
+	//Ver si esta aprobado
+	estudiante.aprobado = (estudiante.promedio >= 70.0);
+	cout << "\n Datos cappturados correctamente. \n";
+	cout << "promedio calculado:"<< fixed << setprecision(2) << estudiante.promedio << "\n";
+	cout << "estado: "<< (estudiante.aprobado ? "APROBADO": "REPROBADO") << "\n";
 }
