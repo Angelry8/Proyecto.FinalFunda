@@ -131,4 +131,20 @@ void DatosEstudiantes (estudiantes& estudiante, int numeroEstudiante){
 	estudiante.primerApellido = validarNombre("ingrese primer apellido: ");
 	estudiante.segundoApellido = validarNombre("ingrese segundo apellido: ");
 	estudiante.cedula = validarNumerosPositivos("ingrese numero de cedula: ");
+
+	//Capturar calificaciones 
+	cout << "\n CALIFICACIONES:\n";
+	cout << "--------------------\n";
+
+	for (int = 0; i <5; i++){
+		string mensaje = "ingrese nota del examen #" + to_stringi(i + 1) + ": ";
+		estudiantes.calificaciones[i] = validarCalificacion (mensaje);
+	}
+
+	//Calcular promedio
+	double suma = 0.0;
+	for (int i = 0; i < 5; i++){
+		suma += estudiante.calificaciones[i];
+	}
+	estudiante.promedio = suma / 5.0;
 }
