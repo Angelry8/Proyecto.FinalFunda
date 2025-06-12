@@ -154,3 +154,55 @@ void DatosEstudiantes (estudiantes& estudiante, int numeroEstudiante){
 	cout << "promedio calculado:"<< fixed << setprecision(2) << estudiante.promedio << "\n";
 	cout << "estado: "<< (estudiante.aprobado ? "APROBADO": "REPROBADO") << "\n";
 }
+
+// Función para mostrar reporte de aprobados
+void ReporteAprobados(const vector<Estudiante>& estudiantes) {
+    cout << "\n";
+    cout << "==================== APROBADOS ====================\n";
+    cout << "Nombre completo           Ciclo   Cedula     Promedio\n";
+    cout << "--------------------------------------------------------------\n";
+    
+    bool hayAprobados = false;
+    for (const auto& estudiante : estudiantes) {
+        if (estudiante.aprobado) {
+            hayAprobados = true;
+            string nombreCompleto = estudiante.primerNombre + " " + 
+                                  estudiante.primerApellido + " " + 
+                                  estudiante.segundoApellido;
+            cout << "> " << nombreCompleto 
+                 << " (" << estudiante.ciclo << ") " 
+                 << estudiante.cedula << " " 
+                 << fixed << setprecision(2) << estudiante.promedio << endl;
+        }
+    }
+    
+    if (!hayAprobados) {
+        cout << "No hay estudiantes aprobados en este periodo.\n";
+    }
+}
+
+// Función para mostrar a los reprobados
+void ReporteReprobados(const vector<Estudiante>& estudiantes) {
+    cout << "\n";
+    cout << "==================== REPROBADOS ====================\n";
+    cout << "Nombre completo           Ciclo   Cedula     Promedio\n";
+    cout << "----------------------------------------------------\n";
+    
+    bool hayReprobados = false;
+    for (const auto& estudiante : estudiantes) {
+        if (!estudiante.aprobado) {
+            hayReprobados = true;
+            string nombreCompleto = estudiante.primerNombre + " " + 
+                                  estudiante.primerApellido + " " + 
+                                  estudiante.segundoApellido;
+            cout << "> " << nombreCompleto 
+                 << " (" << estudiante.ciclo << ") " 
+                 << estudiante.cedula << " " 
+                 << fixed << setprecision(2) << estudiante.promedio << endl;
+        }
+    }
+    
+    if (!hayReprobados) {
+        cout << "¡Felicidades! No hay estudiantes reprobados en este periodo.\n";
+    }
+}
