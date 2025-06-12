@@ -206,3 +206,33 @@ void ReporteReprobados(const vector<Estudiante>& estudiantes) {
         cout << "¡Felicidades! No hay estudiantes reprobados en este periodo.\n";
     }
 }
+
+// Función para mostrar estadísticas generales
+void Estadisticas(const vector<Estudiante>& estudiantes) {
+    int totalAprobados = 0;
+    int totalReprobados = 0;
+    double sumaPromedios = 0.0;
+    
+    for (const auto& estudiante : estudiantes) {
+        if (estudiante.aprobado) {
+            totalAprobados++;
+        } else {
+            totalReprobados++;
+        }
+        sumaPromedios += estudiante.promedio;
+    }
+    
+    double promedioGeneral = sumaPromedios / estudiantes.size();
+    double porcentajeAprobados = (double)totalAprobados / estudiantes.size() * 100.0;
+    
+    cout << "\n";
+    cout << "******************************************************************************\n";
+    cout << "*                               ESTADISTICAS GENERALES                       *\n";
+    cout << "******************************************************************************\n";
+    cout << "\n";
+    cout << " Total de estudiantes evaluados: " << estudiantes.size() << endl;
+    cout << " Estudiantes aprobados: " << totalAprobados << endl;
+    cout << " Estudiantes reprobados: " << totalReprobados << endl;
+    cout << " Promedio general del grupo: " << fixed << setprecision(2) << promedioGeneral << endl;
+    cout << " Porcentaje de aprobacion: " << fixed << setprecision(1) << porcentajeAprobados << "%" << endl;
+}
