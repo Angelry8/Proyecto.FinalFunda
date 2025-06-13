@@ -45,7 +45,6 @@ void EncabezadoEstudiantes(int numeroEstudiante) {
 	cout << "+--------------------------------------------------------+\n";
 	cout << "\n";
 }
-return 0;
 
 // Funcion para validar que una cadena solo contenga letras y espacios
 bool soloLetrasYEspacios(const string& texto) {
@@ -120,25 +119,26 @@ double validarCalificacion(const string& mensaje) {
 }
 
 //Funcion para capturar datos de un estudiante
-void DatosEstudiantes (estudiantes& estudiante, int numeroEstudiante){
-	EncabezadoEstudiantes (numeroEstudiante);
+void DatosEstudiante(Estudiante& estudiante, int numeroEstudiante) {
+	EncabezadoEstudiantes(numeroEstudiante);
 
 	//capturar datos personales 
 	cout << "DATOS PERSONALES:\n";
 	cout << "-------------------\n";
 
-	estudiante.primerNombre = validarNombre("ingrese primer nombre: ");
-	estudiante.primerApellido = validarNombre("ingrese primer apellido: ");
-	estudiante.segundoApellido = validarNombre("ingrese segundo apellido: ");
-	estudiante.cedula = validarNumerosPositivos("ingrese numero de cedula: ");
+	estudiante.primerNombre = validarNombre("Ingrese primer nombre: ");
+	estudiante.primerApellido = validarNombre("Ingrese primer apellido: ");
+	estudiante.segundoApellido = validarNombre("Ingrese segundo apellido: ");
+    estudiante.ciclo = validarNumerosPositivos("Ingrese ciclo de estudio: ");
+	estudiante.cedula = validarNumerosPositivos("Ingrese numero de cedula: ");
 
 	//Capturar calificaciones 
 	cout << "\n CALIFICACIONES:\n";
 	cout << "--------------------\n";
 
-	for (int = 0; i <5; i++){
-		string mensaje = "ingrese nota del examen #" + to_stringi(i + 1) + ": ";
-		estudiantes.calificaciones[i] = validarCalificacion (mensaje);
+	for (int i = 0; i <5; i++){
+		string mensaje = "Ingrese nota del examen #" + to_string(i + 1) + ": ";
+		estudiante.calificaciones[i] = validarCalificacion (mensaje);
 	}
 
 	//Calcular promedio
@@ -150,9 +150,9 @@ void DatosEstudiantes (estudiantes& estudiante, int numeroEstudiante){
 
 	//Ver si esta aprobado
 	estudiante.aprobado = (estudiante.promedio >= 70.0);
-	cout << "\n Datos cappturados correctamente. \n";
-	cout << "promedio calculado:"<< fixed << setprecision(2) << estudiante.promedio << "\n";
-	cout << "estado: "<< (estudiante.aprobado ? "APROBADO": "REPROBADO") << "\n";
+	cout << "\nDatos capturados correctamente. \n";
+	cout << "Promedio calculado: "<< fixed << setprecision(2) << estudiante.promedio << "\n";
+	cout << "Estado: "<< (estudiante.aprobado ? "APROBADO": "REPROBADO") << "\n";
 }
 
 // Función para mostrar reporte de aprobados
@@ -239,6 +239,7 @@ void Estadisticas(const vector<Estudiante>& estudiantes) {
 
 
 int main() {
+    cout << " \033[2J\033[H";
     // Mostrar encabezado principal
     Encabezado();
     
