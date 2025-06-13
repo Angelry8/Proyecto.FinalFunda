@@ -37,7 +37,7 @@ void Encabezado() {
 	cout << "\n";
 }
 
-// Funcion para mostrar encabezado de secci�n de estudiantes
+// Funcion para mostrar encabezado de seccion de estudiantes
 void EncabezadoEstudiantes(int numeroEstudiante) {
 	cout << "\n";
 	cout << "+--------------------------------------------------------+\n";
@@ -50,11 +50,11 @@ return 0;
 // Funcion para validar que una cadena solo contenga letras y espacios
 bool soloLetrasYEspacios(const string& texto) {
 	if (texto.empty()) {
-		return false; // No permite espacios vac�os
+		return false; // No permite espacios vacios
 	}
 	
 	for (char c : texto) {
-		// Permite solo letras may�sculas, min�sculas y espacios
+		// Permite solo letras mayusculas, minusculas y espacios
 		if (!isalpha(c) && c != ' ') {
 			return false;
 		}
@@ -96,7 +96,7 @@ int validarNumerosPositivos(const string& mensaje) {
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			return valor;
 		} else {
-			cout << " ERROR: Debe ingresar un n�mero entero positivo.\n";
+			cout << " ERROR: Debe ingresar un numero entero positivo.\n";
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
@@ -112,7 +112,7 @@ double validarCalificacion(const string& mensaje) {
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			return calificacion;
 		} else {
-			cout << " ERROR: La calificaci�n debe estar entre 0.0 y 100.0\n";
+			cout << " ERROR: La calificacion debe estar entre 0.0 y 100.0\n";
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		}
@@ -235,4 +235,39 @@ void Estadisticas(const vector<Estudiante>& estudiantes) {
     cout << " Estudiantes reprobados: " << totalReprobados << endl;
     cout << " Promedio general del grupo: " << fixed << setprecision(2) << promedioGeneral << endl;
     cout << " Porcentaje de aprobacion: " << fixed << setprecision(1) << porcentajeAprobados << "%" << endl;
+}
+
+
+int main() {
+    // Mostrar encabezado principal
+    Encabezado();
+    
+    // Capturar número de estudiantes
+    int numEstudiantes = validarNumerosPositivos("Cuantos alumnos desea evaluar? ");
+    
+    // Vector para almacenar estudiantes
+    vector<Estudiante> estudiantes(numEstudiantes);
+    
+    // Capturar datos de cada estudiante
+    for (int i = 0; i < numEstudiantes; i++) {
+        DatosEstudiante(estudiantes[i], i + 1);
+    }
+    
+    // Mostrar reportes
+    cout << "\n\n";
+    cout << "****************************************************************************\n";
+    cout << "                              REPORTES FINALES                              \n";
+    cout << "****************************************************************************\n";
+    
+    ReporteAprobados(estudiantes);
+    ReporteReprobados(estudiantes);
+    Estadisticas(estudiantes);
+    
+    cout << "\n";
+    cout << "******************************************************************************\n";
+    cout << "*                    ¡Proceso completado exitosamente!                       *\n";
+    cout << "*              UNIVERSIDAD NACIONAL - SEDE Regional Chorotega                *\n";
+    cout << "******************************************************************************\n";
+    
+    return 0;
 }
